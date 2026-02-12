@@ -1,5 +1,7 @@
 # mock-openai-server
-Mocked OpenAI server to mimic LLM responses for various testing purposes.
+
+This mock server implements an OpenAI-compatible HTTP API for testing “typewriter” streaming UX without calling a real model: it exposes /v1/chat/completions and /v1/completions (plus /v1/models), accepts a pre-defined mock_response along with tokens_per_second and time_to_first_token controls, tokenizes the response using tiktoken with GPT-4-compatible encoding, and streams decoded tokens over Server-Sent Events at the requested rate (or returns a standard non-streaming completion when stream=false), making it suitable for validating OpenAI Python client streaming behavior in local apps.
+
 # Installation
 
 ```commandline
